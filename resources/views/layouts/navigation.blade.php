@@ -3,8 +3,14 @@
         <div class="flex justify-between h-16">
 
             <div class="flex items-center">
-                <div class="shrink-0 flex items-center text-white font-bold">
-                    Mesa de ayuda
+                <div class="shrink-0 flex items-center">
+                    <a href="{{ route('dashboard') }}">
+                        <img 
+                            src="{{ asset('media/img/infraticket-logo.svg') }}" 
+                            alt="InfraTicket Logo"
+                            class="h-10 w-auto"
+                        >
+                    </a>
                 </div>
 
                 <div class="hidden sm:flex sm:ml-10 sm:space-x-8">
