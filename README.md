@@ -1,59 +1,140 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# InfraTicket - Portal de Gestión de Incidencias
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+InfraTicket es una aplicación web desarrollada con Laravel para la gestión de incidencias mediante un sistema de tickets.
 
-## About Laravel
+El proyecto permite que los usuarios registren incidencias, los técnicos gestionen los tickets asignados y el administrador supervise y asigne las incidencias a los técnicos correspondientes.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Este proyecto forma parte del Trabajo de Fin de Grado de Desarrollo de Aplicaciones Web.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Tecnologías utilizadas
 
-## Learning Laravel
+- Laravel 12
+- PHP 8.2
+- Blade
+- Tailwind CSS
+- Vite
+- SQLite / MariaDB
+- Eloquent ORM
+- Laravel Breeze
+- Composer
+- NPM
+- Git y GitHub
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Funcionalidades principales
 
-## Laravel Sponsors
+- Autenticación de usuarios.
+- Control de roles.
+- Dashboard de tickets.
+- Creación de tickets.
+- Listado de tickets.
+- Filtros por estado, prioridad y técnico.
+- Vista de detalle de ticket.
+- Edición de tickets.
+- Asignación de tickets a técnicos.
+- Página de tickets sin asignar.
+- Página de tickets asignados.
+- Página de mis tickets.
+- Sistema de comentarios.
+- Historial de cambios de estado.
+- Diseño responsive.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## Roles del sistema
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Administrador
 
-## Contributing
+El administrador puede:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- Ver todos los tickets.
+- Asignar tickets a técnicos.
+- Acceder a tickets sin asignar.
+- Editar tickets.
+- Cambiar estados.
+- Eliminar tickets.
+- Consultar comentarios e historial.
 
-## Code of Conduct
+### Técnico
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+El técnico puede:
 
-## Security Vulnerabilities
+- Ver los tickets que tiene asignados.
+- Consultar el detalle de sus tickets.
+- Añadir comentarios.
+- Cambiar el estado de sus tickets.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+No puede asignar tickets a otros técnicos.
 
-## License
+### Usuario
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+El usuario puede:
+
+- Crear tickets.
+- Ver sus propios tickets.
+- Añadir comentarios en sus tickets.
+- Consultar el estado de sus incidencias.
+
+No puede ver tickets de otros usuarios ni asignar técnicos.
+
+---
+
+## Estados de los tickets
+
+Los tickets pueden tener los siguientes estados:
+
+- Nuevo
+- En curso
+- Resuelto
+- Cerrado
+
+Cuando un usuario crea un ticket, se crea en estado **Nuevo**.  
+Cuando el administrador asigna un técnico, el ticket pasa a **En curso**.
+
+---
+
+## Prioridades
+
+Los tickets pueden tener tres prioridades:
+
+- Alta
+- Media
+- Baja
+
+---
+
+## Estructura principal del proyecto
+
+```text
+app/
+├── Http/
+│   └── Controllers/
+│       └── TicketController.php
+├── Models/
+│   ├── User.php
+│   ├── Ticket.php
+│   ├── Comment.php
+│   └── TicketHistory.php
+
+database/
+└── migrations/
+
+resources/
+└── views/
+    ├── layouts/
+    │   └── navigation.blade.php
+    └── tickets/
+        ├── dashboard.blade.php
+        ├── index.blade.php
+        ├── create.blade.php
+        ├── edit.blade.php
+        ├── show.blade.php
+        ├── sin_asignar.blade.php
+        ├── mis_tickets.blade.php
+        └── tickets_asignados.blade.php
+
+routes/
+└── web.php
